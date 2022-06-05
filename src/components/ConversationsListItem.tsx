@@ -7,7 +7,10 @@ import { Correspondant } from '../types/user'
 type ConversationsListItemPropsType = {
   conversation: Conversation
   loggedUserId: number
-  onConversationSelected: (conversationId: number) => void
+  onConversationSelected: (
+    conversationId: number,
+    correspondant: Correspondant
+  ) => void
 }
 
 const ConversationsListItem = ({
@@ -36,7 +39,7 @@ const ConversationsListItem = ({
   ])
 
   const handleClick = () => {
-    onConversationSelected(conversation.id)
+    onConversationSelected(conversation.id, correspondant)
   }
 
   return (

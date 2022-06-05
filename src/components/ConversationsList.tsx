@@ -1,10 +1,14 @@
 import { useEffect, useState } from 'react'
 import { Conversation } from '../types/conversation'
+import { Correspondant } from '../types/user'
 import ConversationsListItem from './ConversationsListItem'
 
 type ConversationsListPropsType = {
   loggedUserId: number
-  onConversationSelected: (conversationId: number) => void
+  onConversationSelected: (
+    conversationId: number,
+    correspondant: Correspondant
+  ) => void
 }
 
 const ConversationsList = ({
@@ -26,8 +30,11 @@ const ConversationsList = ({
     })
   }, [loggedUserId])
 
-  const handleConversationSelection = (conversationId: number) => {
-    onConversationSelected(conversationId)
+  const handleConversationSelection = (
+    conversationId: number,
+    correspondant: Correspondant
+  ) => {
+    onConversationSelected(conversationId, correspondant)
   }
 
   return (
