@@ -15,7 +15,6 @@ const ConversationsList = ({ loggedUserId }: ConversationsListPropsType) => {
         `http://localhost:3005/conversations/${userId}`
       )
       const conversationsResults = response.json()
-      console.log(conversationsResults)
       return conversationsResults
     }
     getConversationsByUserId(loggedUserId.toString()).then((conversations) => {
@@ -29,7 +28,8 @@ const ConversationsList = ({ loggedUserId }: ConversationsListPropsType) => {
         return (
           <ConversationsListItem
             key={conversation.id}
-            conversationDetails={conversation}
+            conversation={conversation}
+            loggedUserId={loggedUserId}
           />
         )
       })}

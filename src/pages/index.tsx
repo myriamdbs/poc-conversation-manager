@@ -1,8 +1,7 @@
-import { FC, useEffect, useState } from 'react'
+import { FC } from 'react'
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import { loggedUserId } from './_app'
-import { Conversation } from '../types/conversation'
 import ConversationsList from '../components/ConversationsList'
 
 const Home: FC = () => {
