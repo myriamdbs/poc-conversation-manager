@@ -2,15 +2,12 @@ import { Conversation } from '../types/conversation'
 import styles from '../styles/ConversationsListItem.module.scss'
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
+import { Correspondant } from '../types/user'
 
 type ConversationsListItemPropsType = {
   conversation: Conversation
   loggedUserId: number
   onConversationSelected: (conversationId: number) => void
-}
-type Correspondant = {
-  id: number
-  nickname: string
 }
 
 const ConversationsListItem = ({
