@@ -1,0 +1,15 @@
+.wrapper {
+  border: 2px solid lightblue;
+  border-radius: 6px;
+  background-color: whitesmoke;
+  padding: 15px;
+  margin: 10px;
+  width: 90%;
+  display: flex;
+  place-items: center;
+
+  .nickname {
+    margin-left: 15px;
+    font-weight: 600;
+  }
+}
