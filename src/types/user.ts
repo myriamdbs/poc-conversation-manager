@@ -3,3 +3,5 @@ export interface User {
   nickname: string
   token: string
 }
+
+export type Correspondant = Pick<User, 'id' | 'nickname'>
