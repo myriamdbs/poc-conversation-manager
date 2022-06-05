@@ -1,0 +1,33 @@
+.msgWrapper {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  align-items: flex-end;
+  height: 75vh;
+  justify-content: flex-end;
+
+  .msgBubbleFromUser {
+    background-color: lightpink;
+    text-align: right;
+    padding: 4px 10px;
+    width: 60%;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    align-self: flex-end;
+  }
+
+  .msgBubbleFromCorrespondant {
+    background-color: lightgray;
+    text-align: left;
+    padding: 4px 10px;
+    width: 60%;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    align-self: flex-start;
+  }
+}
+
+.divider {
+  border: 1px solid darkgray;
+  width: 100%;
+}
