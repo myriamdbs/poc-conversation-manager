@@ -1,10 +1,18 @@
-import { FC } from 'react'
+import { FC, useState } from 'react'
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import { loggedUserId } from './_app'
 import ConversationsList from '../components/ConversationsList'
+import MessagesWindow from '../components/MessagesWindow'
 
 const Home: FC = () => {
+  const [selectedConversationId, setSelectedConversationId] =
+    useState<number>(null)
+
+  const handleConversationSelection = (conversationId: number) => {
+    setSelectedConversationId(conversationId)
+  }
+
   return (
     <div className={styles.container}>
       <Head>
@@ -13,7 +21,18 @@ const Home: FC = () => {
       </Head>
 
       <main className={styles.main}>
-        {loggedUserId && <ConversationsList loggedUserId={loggedUserId} />}
+        {loggedUserId && !selectedConversationId && (
+          <ConversationsList
+            loggedUserId={loggedUserId}
+            onConversationSelected={handleConversationSelection}
+          />
+        )}
+        {selectedConversationId && (
+          <MessagesWindow
+            loggedUserId={loggedUserId}
+            conversationId={selectedConversationId}
+          />
+        )}
       </main>
     </div>
   )

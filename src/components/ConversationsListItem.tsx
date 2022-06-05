@@ -6,6 +6,7 @@ import Image from 'next/image'
 type ConversationsListItemPropsType = {
   conversation: Conversation
   loggedUserId: number
+  onConversationSelected: (conversationId: number) => void
 }
 type Correspondant = {
   id: number
@@ -15,6 +16,7 @@ type Correspondant = {
 const ConversationsListItem = ({
   conversation,
   loggedUserId,
+  onConversationSelected,
 }: ConversationsListItemPropsType) => {
   const [correspondant, setCorrespondant] = useState<Correspondant>(null)
 
@@ -35,8 +37,13 @@ const ConversationsListItem = ({
     conversation.senderNickname,
     loggedUserId,
   ])
+
+  const handleClick = () => {
+    onConversationSelected(conversation.id)
+  }
+
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.wrapper} onClick={handleClick}>
       {correspondant?.id && (
         <Image
           src={`/../public/avatar-${correspondant.id}.png`}

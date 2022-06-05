@@ -4,9 +4,13 @@ import ConversationsListItem from './ConversationsListItem'
 
 type ConversationsListPropsType = {
   loggedUserId: number
+  onConversationSelected: (conversationId: number) => void
 }
 
-const ConversationsList = ({ loggedUserId }: ConversationsListPropsType) => {
+const ConversationsList = ({
+  loggedUserId,
+  onConversationSelected,
+}: ConversationsListPropsType) => {
   const [conversations, setConversations] = useState<Conversation[]>([])
 
   useEffect(() => {
@@ -22,6 +26,10 @@ const ConversationsList = ({ loggedUserId }: ConversationsListPropsType) => {
     })
   }, [loggedUserId])
 
+  const handleConversationSelection = (conversationId: number) => {
+    onConversationSelected(conversationId)
+  }
+
   return (
     <>
       {conversations.map((conversation) => {
@@ -30,6 +38,7 @@ const ConversationsList = ({ loggedUserId }: ConversationsListPropsType) => {
             key={conversation.id}
             conversation={conversation}
             loggedUserId={loggedUserId}
+            onConversationSelected={handleConversationSelection}
           />
         )
       })}
