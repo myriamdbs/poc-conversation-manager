@@ -6,11 +6,12 @@ import { Correspondant } from '../types/user'
 type MessagesWindowPropsType = {
   loggedUserId: number
   conversationId: number
+  correspondant: Correspondant
 }
 
 const MessagesWindow = ({
   loggedUserId,
-
+  correspondant,
   conversationId,
 }: MessagesWindowPropsType) => {
   const [messages, setMessages] = useState<Message[]>([])
@@ -30,6 +31,10 @@ const MessagesWindow = ({
 
   return (
     <>
+      <header className={styles.header}>
+        Your conversation with {correspondant.nickname}
+      </header>
+      <span className={styles.divider}></span>
       <div className={styles.msgWrapper}>
         {messages.map((msg) => {
           return (

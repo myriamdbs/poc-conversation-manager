@@ -4,13 +4,20 @@ import styles from '../styles/Home.module.css'
 import { loggedUserId } from './_app'
 import ConversationsList from '../components/ConversationsList'
 import MessagesWindow from '../components/MessagesWindow'
+import { Correspondant } from '../types/user'
 
 const Home: FC = () => {
   const [selectedConversationId, setSelectedConversationId] =
     useState<number>(null)
+  const [selectedCorrespondant, setSelectedCorrespondant] =
+    useState<Correspondant>(null)
 
-  const handleConversationSelection = (conversationId: number) => {
+  const handleConversationSelection = (
+    conversationId: number,
+    correspondant: Correspondant
+  ) => {
     setSelectedConversationId(conversationId)
+    setSelectedCorrespondant(correspondant)
   }
 
   return (
@@ -31,6 +38,7 @@ const Home: FC = () => {
           <MessagesWindow
             loggedUserId={loggedUserId}
             conversationId={selectedConversationId}
+            correspondant={selectedCorrespondant}
           />
         )}
       </main>
