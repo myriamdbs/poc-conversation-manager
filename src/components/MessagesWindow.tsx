@@ -51,12 +51,12 @@ const MessagesWindow = ({
             </div>
           )
         })}
-        <span className={styles.divider}></span>
-        <MessageInput
-          conversationId={conversationId}
-          onSubmit={handleNewMessageSubmitted}
-        />
       </div>
+      <span className={styles.divider}></span>
+      <MessageInput
+        conversationId={conversationId}
+        onSubmit={handleNewMessageSubmitted}
+      />
     </>
   )
 }
