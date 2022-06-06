@@ -1,3 +1,37 @@
+# How to run the project
+
+### To Retrieve Project :
+
+1. Clone the repository on your machine
+
+```bash
+git clone https://github.com/myriamdbs/poc-conversation-manager.git
+```
+
+2. Install Dependencies
+
+```bash
+npm install
+```
+
+3. run the development server:
+
+```bash
+npm run start
+```
+
+and the server for API calls :
+
+```bash
+npm run start-server
+```
+
+---
+
+---
+
+---
+
 # Context :
 
 At leboncoin, our users can share messages about a transaction, or ask for informations about any products.
