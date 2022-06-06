@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Message } from '../types/message'
 import styles from '../styles/MessagesWindow.module.scss'
 import { Correspondant } from '../types/user'
+import MessageInput from './MessageInput'
 
 type MessagesWindowPropsType = {
   loggedUserId: number
@@ -15,6 +16,7 @@ const MessagesWindow = ({
   conversationId,
 }: MessagesWindowPropsType) => {
   const [messages, setMessages] = useState<Message[]>([])
+  const [newMessagePost, setNewMessagePost] = useState<boolean>(false)
 
   useEffect(() => {
     const getMessagesByConversationsId = async (conversationId: string) => {
@@ -27,7 +29,12 @@ const MessagesWindow = ({
     getMessagesByConversationsId(conversationId.toString()).then((messages) => {
       return setMessages(messages)
     })
-  }, [conversationId])
+    setNewMessagePost(false)
+  }, [conversationId, newMessagePost])
+
+  const handleNewMessageSubmitted = () => {
+    setNewMessagePost(true)
+  }
 
   return (
     <>
@@ -51,6 +58,10 @@ const MessagesWindow = ({
           )
         })}
         <span className={styles.divider}></span>
+        <MessageInput
+          conversationId={conversationId}
+          onSubmit={handleNewMessageSubmitted}
+        />
       </div>
     </>
   )
