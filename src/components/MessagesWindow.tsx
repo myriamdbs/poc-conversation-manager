@@ -3,6 +3,7 @@ import { Message } from '../types/message'
 import styles from '../styles/MessagesWindow.module.scss'
 import { Correspondant } from '../types/user'
 import MessageInput from './MessageInput'
+import { getMessagesByConversationsId } from '../services'
 
 type MessagesWindowPropsType = {
   loggedUserId: number
@@ -19,13 +20,6 @@ const MessagesWindow = ({
   const [newMessagePost, setNewMessagePost] = useState<boolean>(false)
 
   useEffect(() => {
-    const getMessagesByConversationsId = async (conversationId: string) => {
-      const response = await fetch(
-        `http://localhost:3005/messages/${conversationId}`
-      )
-      const messagesResults = response.json()
-      return messagesResults
-    }
     getMessagesByConversationsId(conversationId.toString()).then((messages) => {
       return setMessages(messages)
     })
